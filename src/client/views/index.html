@@ -3,12 +3,11 @@
     <head>
         <meta charset="utf-8">
         <title>Test</title>
-        <link rel="stylesheet" href="styles/resets.css">
-        <link rel="stylesheet" href="styles/base.scss">
-        <link rel="stylesheet" href="styles/header.css">
-        <link rel="stylesheet" href="styles/form.css">
-        <link rel="stylesheet" href="styles/footer.css">
-        <base href="/">
+        <link href="/styles/resets.css">
+        <link href="/styles/base.css">
+        <link href="/styles/header.css">
+        <link href="/styles/form.css">
+        <link href="/styles/footer.css">
     </head>
 
     <body>
@@ -24,9 +23,9 @@
 
         <main>
             <section>
-                <form class="" onsubmit="return handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
-                    <input type="submit" name="" value="submit" onclick="return handleSubmit(event)" onsubmit="return handleSubmit(event)">
+                <form class="" onsubmit="return Client.handleSubmit(event)">
+                    <input id="name" type="text" name="input" value="" placeholder="Name">
+                    <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
                 </form>
             </section>
 
@@ -36,9 +35,25 @@
             </section>
         </main>
 
+        <script src="/src/client/index.js"></script>
+        <script>
+            window.onload = Client.handleSubmit('webpack');
+            window.onload = Client.checkForName('webpack');
+        </script>
+
         <footer>
             <p>This is a footer</p>
         </footer>
-
+       <!-- 
+        <script>
+            // Check that service worker are supported
+            if('serviceWorker' in navigator) {
+                // Use the window load event to keep the page load performant
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js');
+                });
+            }
+        </script>
+        -->
     </body>
 </html>
